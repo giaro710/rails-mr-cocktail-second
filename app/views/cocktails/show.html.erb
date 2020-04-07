@@ -1,4 +1,10 @@
+<nav class="navbar navbar-light bg-light show-nav">
+  <%= link_to 'Mr Cocktail', root_path, class: "navbar-brand" %>
+</nav>
+
 <h1><%= @cocktail.name %></h1>
+
+<h2>Ingredients</h2>
 
 <% @cocktail.doses.each do |dose| %>
   <h3><%= dose.ingredient.name %><span> - <%= dose.description %></span></h3>
@@ -23,5 +29,11 @@
   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
   <button type="submit" class="btn btn-primary">Add ingredient</button>
 </form>
+
+<br><br>
+
+
+
+
 
 <%= link_to 'Back', root_path %>

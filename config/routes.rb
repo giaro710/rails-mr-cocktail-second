@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   post '/', to: 'cocktails#create'
   delete '/:id', to: 'cocktails#destroy'
 
-  get '/:id', to: 'doses#index'
+  get '/:id', to: 'cocktails#show'
   post '/:id', to: 'doses#create'
   get '/:id/:dose_id', to: 'doses#edit'
   post '/:id/:dose_id', to: 'doses#update'
   delete '/:id/:dose_id', to: 'doses#destroy'
+
+  # post '/:id/review_id', to: 'reviews#create'
 end

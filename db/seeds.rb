@@ -9,6 +9,10 @@ require 'open-uri'
 require 'json'
 require 'faker'
 
+Dose.destroy_all
+Ingredient.destroy_all
+Cocktail.destroy_all
+
 url = open('https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list').read
 data = JSON.parse(url)
 data['drinks'].each do |drink|
@@ -21,4 +25,8 @@ Cocktail.create!(name: 'Gin Tonic')
 
 8.times do
   Dose.create!(description: Faker::Food.measurement, cocktail: Cocktail.all.sample, ingredient: Ingredient.all.sample)
+end
+
+3.times do
+  Review.create!(content: Faker::Restaurant.review, cocktail: Cocktail.all.sample, rating: rand(0..5))
 end

@@ -1,19 +1,58 @@
 // Place all the styles related to the cocktails controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+
 body {
+  text-align: center;
+  background-color: #e5c8ac;
+  color: #2e2836;
+  font-family: 'Sen', sans-serif;
+}
+
+h1 {
+  color: #2e2836;
+
+}
+
+.cocktail-title{
+  padding: 48px;
   text-align: center;
 }
 
-.cocktail-card-container {
-  display: flex;
+.first-banner {
+  background-color: #be8a60;
+}
 
+.show-nav {
+  background-color: #be8a60;
 }
 
 .cocktail-card {
+  border: solid 1px #6a2e35;
+  padding: 40px;
+    width: 300px;
+    border-radius: 25px;
+    box-shadow: 4px 4px 10px #6a2e35;
+}
+
+.name-button {
+  color: #401F3E;
+}
+
+a {
+  color: #401F3E;
+  // text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #401F3E;
+  // text-decoration: none;
+  font-size: 42px;
 
 }
 
-.ingredients {
-
+.trash-button:hover {
+  color: red;
 }

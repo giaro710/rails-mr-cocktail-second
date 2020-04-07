@@ -2,9 +2,13 @@ class CocktailsController < ApplicationController
 
   def index
     @cocktails = Cocktail.all
+    @reviews = Review.all
   end
 
   def show
+    @cocktail = Cocktail.find(params[:id])
+    @reviews = Review.all
+    @review = Review.new
   end
 
   def new
@@ -14,7 +18,7 @@ class CocktailsController < ApplicationController
   def create
     cocktail = Cocktail.create(name: params['cocktail'])
     ingredient = Ingredient.where(name: params['ingredient']).first
-    Dose.create(description: params['description'], cocktail: cocktail, ingredient: ingredient)
+    Dose.create(description: params['dose'], cocktail: cocktail, ingredient: ingredient)
 
     redirect_to root_path
   end
