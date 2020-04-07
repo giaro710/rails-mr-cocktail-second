@@ -10,9 +10,14 @@ body {
   font-family: 'Sen', sans-serif;
 }
 
+.main-title {
+  height: 3.5em;
+}
+
 h1 {
   color: #2e2836;
-
+  font-family: 'Sen';
+  font-weight: 900;
 }
 
 .cocktail-title{
@@ -30,10 +35,11 @@ h1 {
 
 .cocktail-card {
   border: solid 1px #6a2e35;
-  padding: 40px;
-    width: 300px;
-    border-radius: 25px;
-    box-shadow: 4px 4px 10px #6a2e35;
+
+  width: 380px;
+  height: 150px;
+  border-radius: 25px;
+  box-shadow: 4px 4px 10px #6a2e35;
 }
 
 .name-button {
@@ -53,6 +59,6 @@ a:hover {
 
 }
 
-.trash-button:hover {
-  color: red;
+.trash-button {
+  z-index: 999;
 }
