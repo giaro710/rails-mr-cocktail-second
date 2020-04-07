@@ -30,12 +30,8 @@ class CocktailsController < ApplicationController
 
   private
 
-  def set_cocktails
-    @cocktail = Cocktail.find(params[:id])
-  end
-
   def cocktail_params
-    params.require(:cocktail).permit(:name, :photo)
+    params.require(:cocktail).permit(:name, :photo, )
   end
 
 

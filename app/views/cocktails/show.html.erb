@@ -1,34 +1,77 @@
-<nav class="navbar navbar-light bg-light show-nav">
+<nav class="navbar navbar-light show-nav">
   <%= link_to 'Mr Cocktail', root_path, class: "navbar-brand" %>
 </nav>
 
-<h1><%= @cocktail.name %></h1>
+<div class="cocktail-title">
+  <h1><%= @cocktail.name %></h1>
+</div>
 
-<h2>Ingredients</h2>
 
-<% @cocktail.doses.each do |dose| %>
-  <h3><%= dose.ingredient.name %><span> - <%= dose.description %></span></h3>
+<div class="ingredients-container">
 
-  <%= link_to '', cocktail_dose_path(dose.cocktail, dose), class: "fas fa-trash", method: :delete %>
-  <%= link_to '', edit_cocktail_dose_path(dose.cocktail, dose), class: "far fa-edit" %>
-<% end %>
+  <div class="left-part">
 
-<br><br>
+    <h2>Ingredients</h2>
+    <% @cocktail.doses.each do |dose| %>
+      <div class="intern-left-side">
+        <ul>
+          <li><%= dose.ingredient.name %><span> - <%= dose.description %></span></li>
+        </ul>
 
-<%= simple_form_for [ @cocktail, @dose ] do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <div class="form-inputs">
-    <%= f.association :ingredient %>
-    <%= f.input :description %>
+        <div>
+          <%= link_to '', cocktail_dose_path(dose.cocktail, dose), class: "fas fa-toilet", method: :delete %>
+          <%= link_to '', edit_cocktail_dose_path(dose.cocktail, dose), class: "far fa-edit" %>
+        </div>
+      </div>
+
+
+    <% end %>
   </div>
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="right-part">
+    <h3>Add an ingredient:</h3>
+    <%= simple_form_for [ @cocktail, @dose ] do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <div class="form-inputs">
+        <%= f.association :ingredient %>
+        <%= f.input :description %>
+      </div>
+      <div class="form-actions">
+        <%= f.button_button t(".submit"), name: "Add", class: "vinaccia-button" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+
+<!-- qui abbiamo le reviews -->
+
+<div class="ingredients-container">
+  <div class="left-part">
+    <h3>Add a review:</h3>
+    <%= simple_form_for [ @cocktail, @review ] do |f| %>
+      <%= f.error_notification %>
+      <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+      <div class="form-inputs">
+        <%= f.input :rating %>
+        <%= f.input :content %>
+      </div>
+      <div class="form-actions">
+        <%= f.button_button t(".submit"), name: "Add", class: "vinaccia-button" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="right-part">
+    <div class="review-part">
+      <h2>Reviews</h2>
+      <ul>
+        <% @reviews.each do |review| %>
+          <li> <%= review.content %><br><%= "✭" * review.rating %> </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
 
 
 
-
-
-<%= link_to 'Back', root_path %>
+<%= link_to 'Back', root_path, class: "back-button" %>

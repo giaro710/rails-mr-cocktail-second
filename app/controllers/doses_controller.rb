@@ -30,10 +30,6 @@ class DosesController < ApplicationController
 
   private
 
-  def set_cocktails
-    @cocktail = Cocktail.find(params[:id])
-  end
-
   def dose_params
     params.require(:dose).permit(:description, :ingredient_id)
   end

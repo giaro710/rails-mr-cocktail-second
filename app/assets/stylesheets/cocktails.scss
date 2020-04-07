@@ -18,11 +18,17 @@ h1 {
   color: #2e2836;
   font-family: 'Sen';
   font-weight: 900;
+  margin-bottom: 15px;
+}
+
+.cocktail-card-container{
+  margin-bottom: 80px;
 }
 
 .cocktail-title{
   padding: 48px;
   text-align: center;
+  padding-bottom: 20px;
 }
 
 .first-banner {
@@ -34,31 +40,48 @@ h1 {
 }
 
 .cocktail-card {
-  border: solid 1px #6a2e35;
-
-  width: 380px;
-  height: 150px;
+  color: #e5c8ac;
+  width: 510px;
+  height: 420px;
   border-radius: 25px;
-  box-shadow: 4px 4px 10px #6a2e35;
+  box-shadow: 4px 4px 10px #9F9F9F;
 }
 
+
 .name-button {
-  color: #401F3E;
+  color: #e5c8ac;
+  text-decoration: none;
 }
 
 a {
-  color: #401F3E;
-  // text-decoration: none;
+  color: #be8a60;
+  text-decoration: none !important;
   transition: 0.3s;
 }
 
 a:hover {
-  color: #401F3E;
-  // text-decoration: none;
-  font-size: 42px;
+  color: #2e2836;
 
 }
 
 .trash-button {
   z-index: 999;
+}
+
+.img-size {
+  object-fit: contain;
+}
+
+.add-button {
+  color: #2e2836;
+  margin-bottom: 40px;
+  padding: 16px;
+}
+
+.bottonepiu {
+  font-size: 30px;
+}
+
+.bottonepiu:hover {
+  font-size: 45px;
 }

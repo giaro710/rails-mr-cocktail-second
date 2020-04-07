@@ -1,13 +1,12 @@
 <div class="jumbotron jumbotron-fluid first-banner">
   <div class="container">
     <h1 class="main-title">Mustache's Cocktail</h1>
+    <%= cl_image_tag("v1586265382/hair_1_zoly0k.png",
+      width: 400, height: 300, crop: :fill) %>
     <p class="lead">Find the right liquid to wet your mustache with</p>
   </div>
 </div>
 
-<div class="add-button">
-  <%= link_to 'Add', new_cocktail_path, class: "" %>
-</div>
 
 
 
@@ -15,25 +14,28 @@
   <h1>Cocktails</h1>
 </div>
 
-<div class="d-flex justify-content-between cocktail-card-container">
+
+<div class="add-button">
+  <%= link_to '', new_cocktail_path, class: "fas fa-plus bottonepiu" %>
+</div>
+
+<!-- Qui iniziano le card dei cocktail -->
+
+<div class="d-flex justify-content-around cocktail-card-container">
 
   <% @cocktails.each do |cocktail| %>
+    <% if cocktail.photo.attached? %>
+      <div class="cocktail-card" style="background-image: url(<%= cl_image_path cocktail.photo.key %>);">
+        <h2><%= link_to cocktail.name, cocktail_path(cocktail) %></h2>
 
-  <%= link_to cocktail_path(cocktail) do %> <!-- qui costruisco dicendo che ogni cocktail avrà la sua pagina con il suo id -->
-    <div class="cocktail-card">
-      <div class="name-button">
-        <h2><%= cocktail.name %></h2>
+
+      <%= link_to '', cocktail_path(cocktail), class: "fas fa-toilet", method: :delete %>
       </div>
-
-
-    <% end %>
-        <%= link_to '', cocktail_path(cocktail), class: "fas fa-trash", method: :delete %>
-
-    </div>
+      <% end %>
     <% end %>
 </div>
 
-<!-- ✯ -->
+
 
 
 
