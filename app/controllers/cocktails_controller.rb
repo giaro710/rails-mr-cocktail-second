@@ -7,6 +7,7 @@ class CocktailsController < ApplicationController
 
   def show
     @cocktail = Cocktail.find(params[:id])
+    @dose = Dose.new(cocktail: @cocktail)
     @reviews = Review.all
     @review = Review.new
   end
@@ -16,16 +17,14 @@ class CocktailsController < ApplicationController
   end
 
   def create
-    cocktail = Cocktail.create(name: params['cocktail'])
-    ingredient = Ingredient.where(name: params['ingredient']).first
-    Dose.create(description: params['dose'], cocktail: cocktail, ingredient: ingredient)
+    cocktail = Cocktail.create(cocktail_params)
 
-    redirect_to root_path
+    redirect_to cocktail_path(cocktail.id)
   end
 
   def destroy
     cocktail = Cocktail.find(params[:id])
-    cocktail.delete
+    cocktail.destroy
     redirect_to root_path
   end
 
@@ -36,7 +35,7 @@ class CocktailsController < ApplicationController
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name)
+    params.require(:cocktail).permit(:name, :photo)
   end
 
 

@@ -1,20 +1,14 @@
-<form action="/" method="post">  <!-- action è il path -->
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Cocktail's name</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" name="cocktail" placeholder="Es. Mojito">
+<%= simple_form_for(@cocktail) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
+
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlSelect1">Ingredients</label>
-    <select class="form-control" id="exampleFormControlSelect1" name="ingredient">
-      <% Ingredient.all.each do |ingredient| %>
-      <option><%= ingredient.name %></option>
-      <% end %>
-    </select>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Dose:</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1" name="dose"></textarea>
-  </div>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<% end %>
+
+<!-- f.association :ingredients, as: :check_boxes -->
